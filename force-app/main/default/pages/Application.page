@@ -1,0 +1,54 @@
+<apex:page standardController="Application__c"  extensions="SubmitApplication" html-style="background-color: var(--bgColor);" showHeader="false">
+    
+    <style>
+    .btn 
+    {font-family: Merriweather !important; 
+     padding: 6px 12px !important; 
+     margin: 1px !important;
+     color: black !important; 
+     background-repeat: no repeat !important; 
+     overflow: hidden !important; 
+     background-image: none !important; 
+     background-color: transparent !important;
+     border: solid black 1px !important;
+     }
+    
+    .btn:hover{background-color: lightgray !important;}
+    </style>
+    <title>Application Page</title>
+	
+    <apex:sectionHeader title="Application Form" html-style="font-family: Merriweather;"/>
+    <apex:pageMessages ></apex:pageMessages>
+
+    <apex:form >
+		<apex:pageBlock title="Submit Job Application with a Resume">  
+            <apex:pageBlockSection columns="1" title="Personal Details" >
+                <apex:inputField value="{!Application__c.First_Name__c}"/>
+                <apex:inputText value="{!Application__c.Last_Name__c}"/>  
+                <apex:inputField value="{!Application__c.Phone__c}"/>
+                <apex:inputField value="{!Application__c.Email__c}"/>
+                <apex:inputField value="{!Application__c.Details__c}"/>
+
+            </apex:pageBlockSection>
+
+            
+            <apex:pageBlockSection >
+                <apex:outputLabel style="color:blue">Select your file</apex:outputLabel>
+                &nbsp; 
+                <apex:inputFile id="myFile" value="{!myDoc.Body}" fileName="{!myDoc.name}"></apex:inputFile>
+            </apex:pageBlockSection>
+        
+            <apex:pageblockButtons >
+                <apex:commandButton value="Submit" action="{!upload}" styleClass="btn"/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <apex:commandButton value="Back to Job lists" action="{!jobList}" styleClass="btn"/>
+            </apex:pageblockButtons>
+
+
+        </apex:pageBlock>             
+
+
+    </apex:form> 
+
+
+
+</apex:page>
