@@ -38,8 +38,6 @@
             }));
             $A.enqueueAction(cartPrice);
         },
-        
-        
     //end of apex controller functions
         
         
@@ -85,7 +83,30 @@
         },
     
         
-    
+        //empties the current cart and then redirects user 
+        startOver: function(component){
+            //calls the server and removes all pizzas from the current cart
+            let resetCart = component.get("c.emptyCart");
+            resetCart.setCallback(this, $A.getCallback(function(response)
+            {
+                let returnState = reponse.getState();
+                
+                if(returnState === 'SUCCESS')
+                {
+                    component.set('v.data', reponse.getReturnValue());
+                }
+                else if(returnState === 'ERROR')
+                {
+                    let errors = response.getError();
+                    console.error(errors);
+                }
+                    
+            }));
+            $A.enqueueAction(resetCart);
+            
+            //navigate back to home page? josh's page?
+            
+        },
     
         viewCart: function(component){
             //navigate back to johns page
