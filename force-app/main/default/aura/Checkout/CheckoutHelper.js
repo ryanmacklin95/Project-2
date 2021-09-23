@@ -40,6 +40,11 @@
         },
         
         
+    //end of apex controller functions
+        
+        
+        
+        
         
         
     //functions for coupon codes    
@@ -53,9 +58,11 @@
             if(validCoupon == couponCodes)
             {
                 component.set("v.insertCouponSection", true);
+                component.set("v.invalidCoupon", false);
             }
             else{
                 component.set("v.invalidCoupon", true);
+                component.set("v.insertCouponSection", false);
             }    
         },
         
@@ -64,7 +71,7 @@
             //does the logic to lower the total price
             return ((1-.15)*cartPrice);
         },
-        
+    //end of functions for coupons
         
         
         
@@ -78,30 +85,7 @@
         },
     
         
-        //empties the current cart and then redirects user 
-        startOver: function(component){
-            //calls the server and removes all pizzas from the current cart
-            let resetCart = component.get("c.emptyCart");
-            resetCart.setCallback(this, $A.getCallback(function(response)
-            {
-                let returnState = reponse.getState();
-                
-                if(returnState === 'SUCCESS')
-                {
-                    component.set('v.data', reponse.getReturnValue());
-                }
-                else if(returnState === 'ERROR')
-                {
-                    let errors = response.getError();
-                    console.error(errors);
-                }
-                    
-            }));
-            $A.enqueueAction(resetCart);
-            
-            //navigate back to home page? josh's page?
-            
-        },
+    
     
         viewCart: function(component){
             //navigate back to johns page
@@ -109,7 +93,7 @@
     
           
         Buy: function(component){
-            let removeCart = component.get("c.submitOrderAndDeleteCart");
+            let removeCart = component.get("c.submitOrder");
             removeCart.setCallback(this, $A.getCallback(function(response)
             {
                 let returnState = response.getState();
@@ -126,6 +110,8 @@
             }));
             
             $A.enqueueAction(removeCart);
+            
+            //needs to go to a delivery confirmation page
         }
     
     })

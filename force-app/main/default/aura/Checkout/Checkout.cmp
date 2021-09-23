@@ -81,8 +81,12 @@
         <!-- valid coupon code section -->
         <aura:if isTrue="{!v.insertCouponSection}">
         	<div class="slds-align_absolute-center">
-            	<p class="textResize">Congrats, you get your amazing order at an even lower price!</p>
-                <lightning:outputField fieldName="{!c.reducedPrice}" />
+                <p class="textResize">Congrats, you get your amazing order at an even lower price! </p>
+            </div>     
+                
+            <div class="slds-align_absolute-center">
+                Your new price: 
+				<lightning:outputField fieldName="{!c.reducedPrice}" />
             </div>
         </aura:if>
         
