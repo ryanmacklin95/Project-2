@@ -38,6 +38,9 @@
             }));
             $A.enqueueAction(cartPrice);
         },
+    //end of apex controller functions
+        
+        
         
         
         
@@ -53,9 +56,11 @@
             if(validCoupon == couponCodes)
             {
                 component.set("v.insertCouponSection", true);
+                component.set("v.invalidCoupon", false);
             }
             else{
                 component.set("v.invalidCoupon", true);
+                component.set("v.insertCouponSection", false);
             }    
         },
         
@@ -64,7 +69,7 @@
             //does the logic to lower the total price
             return ((1-.15)*cartPrice);
         },
-        
+    //end of functions for coupons
         
         
         
@@ -109,7 +114,7 @@
     
           
         Buy: function(component){
-            let removeCart = component.get("c.submitOrderAndDeleteCart");
+            let removeCart = component.get("c.submitOrder");
             removeCart.setCallback(this, $A.getCallback(function(response)
             {
                 let returnState = response.getState();
@@ -126,6 +131,8 @@
             }));
             
             $A.enqueueAction(removeCart);
+            
+            //needs to go to a delivery confirmation page
         }
     
     })
