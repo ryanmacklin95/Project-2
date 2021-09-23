@@ -1,0 +1,106 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" controller="getPizzaFields">
+    <aura:attribute name="couponInput" type="String" />
+    <aura:attribute name="insertCouponSection" type="boolean" default="false" />
+    <aura:attribute name="invalidCoupon" type="boolean" default="false" />
+    
+<!-- image from josh goes here
+    <div class="slds-grid slds-gutters">
+	<div class="slds-col">
+
+    
+
+    </div>
+    </div>
+    -->
+    
+<!-- Navigation buttons that appear above the table --> 
+    <div class="slds-grid slds-gutters">
+    <div class="slds-col">
+        <div class="slds-align_absolute-center" style="height:4rem">
+            <lightning:button class="button-background" variant="brand-outline" label="Add Another Pizza" onclick="{!showPizzaPage}" /> &nbsp;&nbsp;&nbsp;&nbsp;
+            <lightning:button class="button-background" variant="brand-outline" label="Start Over" onclick="{!startOver}" />
+        </div>
+    
+        
+<!-- table that shows all the pizzas in the cart and their toppings and price-->
+        <div>
+            <table border="1" class="tableStyle">
+                <tr>
+                    <th id="firstTable">Order Item</th>
+            		<th class="centerText">Pizza Size</th>
+                    <th class="centerText">Toppings</th>
+                    <th class="centerText">Price</th>
+                </tr>
+                <aura:iteration items="{!c.selectPizzaInCart}" var="myPizza">
+                    <tr>
+                        <td>
+                            <lightning:outputField fieldName="myPizza" />
+                        </td>
+                        <td>
+                            <lightning:outputField fieldName="myPizza.size__c" />
+                        </td>
+                    	<td>
+                            <lightning:outputField fieldName="myPizza.Toppings__c" />
+                        </td>
+                        <td>
+                            <lightning:outputField fieldName="myPizza.Price__c" />
+                        </td>
+                    </tr>
+                </aura:iteration>
+                
+            </table>
+        </div>
+    
+        
+        <!-- total cost and coupon section-->
+        
+        
+        <div class="slds-align_absolute-center">
+            <p class="textResize">Order Total: 
+                <lightning:outputField fieldName="{!c.getTotalPrice}" />
+            </p>
+        </div>
+        
+        
+        <!-- coupon disount section -->
+        
+        
+        <div class="slds-align_absolute-center">
+            <p class="textResize">Have a coupon code? Use it today! 
+            <lightning:input name="userInput" label="Enter Your Coupon Code Here!" onBlur="{!v.couponInput}" />
+            </p>
+        </div>
+        
+        <div class="slds-align_absolute-center">
+        	<lightning:button class="couponButton" variant="brand-Outline" label="Check Code" onclick="{!c.checkUserInput}" />
+        </div>
+        
+        
+        <!-- this sectionly only appears if the user has inserted a valid coupon code -->
+        
+        
+        <aura:if isTrue="{!v.insertCouponSection}">
+        	<div class="slds-align_absolute-center">
+            	<p class="textResize">Congrats, you get your amazing order at an even lower price!</p>
+                <lightning:outputField fieldName="{!c.reducedPrice}" />
+            </div>
+        </aura:if>
+        
+        <aura:if isTrue="{!v.invalidCoupon}">
+        	<div class="slds-align_absolute-center">
+                <p class="textResize">I'm sorry, that code is invalid.</p>
+            </div>
+        </aura:if>
+        
+        
+<!-- Navigation buttons that appear below the table --> 
+        
+        
+        <div class="slds-align_absolute-center" style="height:5rem">
+            <lightning:button class="button-background" variant="brand-Outline" label="View Cart" onclick="{!viewCart}" />&nbsp;&nbsp;&nbsp;&nbsp;
+            <lightning:button variant="brand" label="Purchase" onclick="{!purchaseOrder}" />
+        </div>
+    </div>
+    </div>
+
+</aura:component>
