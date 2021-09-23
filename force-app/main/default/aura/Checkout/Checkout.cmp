@@ -1,5 +1,5 @@
 <aura:component implements="forceCommunity:availableForAllPageTypes" controller="getPizzaFields">
-    <aura:attribute name="couponInput" type="String" />
+    <aura:attribute name="couponInput" type="String" default="invalid code" />
     <aura:attribute name="insertCouponSection" type="boolean" default="false" />
     <aura:attribute name="invalidCoupon" type="boolean" default="false" />
     
@@ -17,8 +17,8 @@
     <div class="slds-grid slds-gutters">
     <div class="slds-col">
         <div class="slds-align_absolute-center" style="height:4rem">
-            <lightning:button class="button-background" variant="brand-outline" label="Add Another Pizza" onclick="{!showPizzaPage}" /> &nbsp;&nbsp;&nbsp;&nbsp;
-            <lightning:button class="button-background" variant="brand-outline" label="Start Over" onclick="{!startOver}" />
+            <lightning:button class="button-background" variant="brand-outline" label="Add Another Pizza" onclick="{!c.showPizzaPage}" /> &nbsp;&nbsp;&nbsp;&nbsp;
+            <lightning:button class="button-background" variant="brand-outline" label="Start Over" onclick="{!c.startOver}" />
         </div>
     
         
@@ -67,7 +67,7 @@
         
         <div class="slds-align_absolute-center">
             <p class="textResize">Have a coupon code? Use it today! 
-            <lightning:input name="userInput" label="Enter Your Coupon Code Here!" onBlur="{!v.couponInput}" />
+            <lightning:input aura:id="userInput" name="userInput" label="Enter Your Coupon Code Here!"/>
             </p>
         </div>
         
@@ -78,7 +78,7 @@
         
         <!-- this sectionly only appears if the user has inserted a valid coupon code -->
         
-        
+        <!-- valid coupon code section -->
         <aura:if isTrue="{!v.insertCouponSection}">
         	<div class="slds-align_absolute-center">
             	<p class="textResize">Congrats, you get your amazing order at an even lower price!</p>
@@ -86,6 +86,7 @@
             </div>
         </aura:if>
         
+        <!-- Invalid coupon code section -->
         <aura:if isTrue="{!v.invalidCoupon}">
         	<div class="slds-align_absolute-center">
                 <p class="textResize">I'm sorry, that code is invalid.</p>
@@ -97,8 +98,8 @@
         
         
         <div class="slds-align_absolute-center" style="height:5rem">
-            <lightning:button class="button-background" variant="brand-Outline" label="View Cart" onclick="{!viewCart}" />&nbsp;&nbsp;&nbsp;&nbsp;
-            <lightning:button variant="brand" label="Purchase" onclick="{!purchaseOrder}" />
+            <lightning:button class="button-background" variant="brand-Outline" label="View Cart" onclick="{!c.viewCart}" />&nbsp;&nbsp;&nbsp;&nbsp;
+            <lightning:button variant="brand" label="Purchase" onclick="{!c.purchaseOrder}" />
         </div>
     </div>
     </div>
