@@ -39,13 +39,18 @@
             $A.enqueueAction(cartPrice);
         },
         
+        
+        
+        
     //functions for coupon codes    
         couponDiscounts: function(component)
         {
+          let userInput = component.find("userInput").get("v.value");
+          component.set("v.couponInput", userInput);
           let validCoupon = component.get("v.couponInput");
           let couponCodes = "I love pizza";
             
-            if(validCoupon == thisCode)
+            if(validCoupon == couponCodes)
             {
                 component.set("v.insertCouponSection", true);
             }
@@ -62,10 +67,14 @@
         
         
         
+        
+        
+        
     //navigation buttons functions    
         PizzaPage: function(component)
         {
             //goes back to josh's page
+            console.log("pizza time");
         },
     
         

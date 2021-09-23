@@ -1,18 +1,18 @@
 ({
     selectPizzaInCart: function(component, event, helper){
-        return checkoutHelper.getPizzaInfo(component);
+        return helper.getPizzaInfo(component);
     },
     
     getTotalPrice: function(component, event, helper){
-        return checkoutHelper.getCartPrice(component);
+        return helper.getCartPrice(component);
     },
     
     checkUserInput: function(component, event, helper){
-        checkoutHelper.couponDiscounts(component);
+        helper.couponDiscounts(component);
     },
     
     reducedPrice: function(component, event, helper){
-        return checkoutHelper.applyDiscount(component);
+        return helper.applyDiscount(component);
     },
     
     
@@ -20,18 +20,18 @@
     
 //functions for redirection buttons
     showPizzaPage: function(component, event, helper){
-        CheckoutHelper.PizzaPage(component);
+        helper.PizzaPage(component);
     },
 
     startOver: function(component, event, helper){
-        CheckoutHelper.startOver(component);
+        helper.startOver(component);
     },
 
     viewCart: function(component, event, helper){
-        CheckoutHelper.showCart(component);
+        helper.showCart(component);
     },
 
     purchaseOrder: function(component, event, helper){
-        CheckoutHelper.Buy(component);
+        helper.Buy(component);
     }
 });
