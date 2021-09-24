@@ -1,6 +1,0 @@
-<aura:component implements="forceCommunity:availableForAllPageTypes,force:hasRecordId" controller="CustomController">
-    <aura:attribute name="currCart" Type="Shopping_Cart__c" />
-    <div class="button">
-        <lightning:button variant="base" label="Reorder!" onclick="{!c.Reorder}" class="button"/>
-    </div>
-</aura:component>
