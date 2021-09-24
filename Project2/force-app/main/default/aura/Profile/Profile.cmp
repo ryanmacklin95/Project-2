@@ -1,0 +1,101 @@
+<aura:component implements="flexipage:availableForAllPageTypes,force:hasRecordId,forceCommunity:availableForAllPageTypes" controller = "CustomController">
+    <aura:attribute name="user" Type = "User" />
+    <aura:attribute name="mycontact" Type="Contact" access="private"/>
+    <aura:attribute name="fieldsUser" Type="String[]" default="['Username', 'Email', 'LocaleSidKey']" />
+    <aura:attribute name="fieldsContact" Type="String[]" default="['Name', 'Phone', 'MailingAddress', 'Birthdate']" />
+    
+    <aura:attribute name="cart" Type="Shopping_Cart__c[]" />
+    <aura:attribute name="reOrderCart" Type="Shopping_Cart__c" />
+    <aura:handler name = "init" value="{!this}" action="{!c.pullProfile}" />
+    
+    <div>
+        <lightning:card title="Account Info" class="header">
+            <div class="body">
+                <lightning:recordForm recordId = "{!v.user.Id}" objectApiName="User"
+                                      columns="2" fields="{!v.fieldsUser}" mode = "Readonly" class="body"/>
+            </div>
+        </lightning:card>
+    </div>
+    <div>
+        <br /> 
+        <lightning:card title="Personal Info" class="header">
+            <div class="body">
+                <lightning:recordForm recordId = "{!v.mycontact.Id}" objectApiName="Contact"
+                                      columns="2" fields="{!v.fieldsContact}" mode = "View" class="body"/>
+            </div>
+        </lightning:card>
+    </div>
+    <br />
+    <div class="c-containter">
+        <lightning:card title="Previous Orders" class="order">
+            <lightning:layout verticalAlign="center" multipleRows="around-small" class="x-large">
+                
+                <lightning:layoutItem flexibility="auto" padding="around-small">
+                    
+                    <div class="field-title">
+                        <p class="field-title" title="Cart">Cart</p>
+                    </div>
+                    <aura:iteration items="{!v.cart}" var="c">
+                        <div class="custom-box">
+                            {!c.Name}
+                            <br />
+                        </div> 
+                    </aura:iteration>
+                    
+                </lightning:layoutItem>
+                
+                <lightning:layoutItem flexibility="auto" padding="around-small">
+                    
+                    <p class="field-title" title="Pizza Size">Pizza Size</p>
+                    <aura:iteration items="{!v.cart}" var="cart">
+                        <div class="custom-box">
+                            <aura:iteration items="{!cart.Pizzas__r}" var="p">
+                                {!p.Size__c} &nbsp;
+                            </aura:iteration>
+                            <br/>
+                        </div>
+                    </aura:iteration>
+                    
+                </lightning:layoutItem>
+                <lightning:layoutItem flexibility="auto" padding="around-medium" >
+                    
+                    <p class="field-title" title="Toppings">Toppings</p>
+                    <aura:iteration items="{!v.cart}" var="cart">
+                        <div class="custom-box">
+                            <aura:iteration items="{!cart.Pizzas__r}" var="p">
+                                {!p.Toppings__c} &nbsp;
+                                
+                            </aura:iteration>
+                            <br/>
+                        </div> 
+                    </aura:iteration>
+                    
+                </lightning:layoutItem>
+                <lightning:layoutItem flexibility="auto" padding="around-small">
+                    
+                    <p class="field-title" title="Total">Total</p>
+                    <aura:iteration items="{!v.cart}" var="c">
+                        <div class="custom-box">
+                            {!c.Total_Cost__c}
+                            <br/>
+                        </div>
+                    </aura:iteration>
+                    
+                </lightning:layoutItem>
+                <lightning:layoutItem flexibility="auto" padding="around-small">
+                    
+                    <div class="field-title">
+                        <p class="field-title" title="ReOrder">Order Again?</p>
+                    </div>
+                    <aura:iteration items="{!v.cart}" var="c">
+                        <div>
+                            <c:cart currCart="{!c}" />
+                        </div>
+                    </aura:iteration>
+                    
+                </lightning:layoutItem>
+            </lightning:layout>
+        </lightning:card>
+    </div>
+    
+</aura:component>
