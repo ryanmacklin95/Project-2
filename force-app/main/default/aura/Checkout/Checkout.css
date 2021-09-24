@@ -13,19 +13,18 @@
 
 .THIS #firstTable{
      text-align: center;
-    width: 70px;
+     width: 70px;
 }
 
 .THIS .tableStyle{
-    margin: 1em 0;
-    min-width: 300px;
-      padding: 0 2em;
-  font-family: Montserrat, sans-serif;
-  text-rendering: optimizeLegibility;
-      background: #34495E;
-  color: #fff;
-  border-radius: .4em;
-  overflow: hidden;
+     margin: 1em 0;
+     min-width: 300px;
+	 padding: 0 2em;
+	 font-family: Montserrat, sans-serif;
+     background: #34495E;
+  	 color: #fff;
+  	 border-radius: .4em;
+  	 overflow: hidden;
 }
 
 .THIS .textResize{

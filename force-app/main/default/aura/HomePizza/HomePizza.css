@@ -1,0 +1,38 @@
+.THIS .imageStuff{
+    background: #E5DCC5;
+}
+
+.THIS .topHalf{
+    background: #E5DCC5;
+}
+
+.THIS .botHalf{
+	background-color: #711509;
+}
+
+.THIS .topText{
+    font-size: 20px;
+    background: #E5DCC5;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.THIS .botText{
+    font-size: 18px;
+    text-align: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    background-color: #711509;
+    color: #E5DCC5;
+}
+
+.THIS .buttonClass{
+    background-color: #929660;
+    color: #E5DCC5
+}
+
+.THIS .buttonDiv{
+    background-color: #711509;    
+    text-align: center;
+    padding-bottom: 30px;
+}

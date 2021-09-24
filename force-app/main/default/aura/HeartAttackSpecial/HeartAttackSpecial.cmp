@@ -1,0 +1,28 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" controller="HomePizzaApexController">
+    <aura:attribute name="OrderConfirmed" type="boolean" default="false" />
+    
+    <!-- div for the top half of the page -->
+    <div class="topHalf">
+        <p class="topText">Looking for a quick option? <br />
+        Try our Heart Attack Special today!</p>
+        <!--  <img class="imageStuff" src="{!$Resource.pizzaPlease}"/>    This needs to be a different picture -->
+    </div>
+    
+    
+    
+    <!-- div for the bottom half to display description and button -->
+    <div class="botHalf">
+        <div>
+        	<p class="botText">
+                This extra large pizza features more cheese than you can imagine. Yes, you might die.<br />
+                Still somehow tempted? Click this button.
+            </p>
+        </div>
+        <div class="buttonDiv">
+            <lightning:button class="buttonClass" variant="brand-outline" label="Order Now" onclick="{!c.placeOrder}" />
+            <aura:if isTrue="{!v.OrderConfirmed}">
+            	<p class="botText">Thank you! Your order has been placed.</p>
+            </aura:if>
+        </div>
+    </div>
+</aura:component>
