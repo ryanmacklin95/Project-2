@@ -5,7 +5,7 @@
     <div class="topHalf">
         <p class="topText">Looking for a quick option? <br />
         Try our Hawaiian Special today!</p>
-        <!--  <img class="imageStuff" src="{!$Resource.pizzaPlease}"/>    This needs to be a different picture -->
+        <img class="imageStuff" src="{!$Resource.PineapplePizza}" height="244px"/> 
     </div>
     
     
