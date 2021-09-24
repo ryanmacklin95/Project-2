@@ -28,7 +28,7 @@
             {
                 let returnState = response.getState();
                 
-                if(returnState === 'SUCCES'){
+                if(returnState === 'SUCCESS'){
                     return response;
                 }
                 else if(returnState === 'ERROR'){
