@@ -1,38 +1,32 @@
-public without sharing class getPizzaFields {
+public class CheckoutHelperApexController 
+{
+    public static List<Pizza__c> orderPizzas;
+    public static Shopping_Cart__C thisCart;
+    
+	@auraEnabled
+    public static void insertCart()
+    {
+        contact thisContact = CustomController.getContactInfo();
+        user thisUser = CustomController.getUserInfo();
         
-    //method for the aura component to get the pizza info from the server
-    @AuraEnabled
-    public static List<Pizza__C> getPizzaFields()
-    {
-        List<Pizza__C> Pizza = [SELECT size__c, toppings__c, price__c FROM Pizza__C WHERE name IN: theCart];
-        return Pizza;
-    }
-    
-    @AuraEnabled
-    public static List<Shopping_Cart__C> getTotalCartPrice()
-    {
-        List<Shopping_Cart__C> totalPriceField = [SELECT Total_Cost__C FROM Shopping_Cart__C WHERE name IN: theCart];
-        return totalPriceField;
-    }
-    
-
-    @AuraEnabled
-    public static void emptyCart()
-    {
-        List<Pizza__C> emptyCart = [SELECT name FROM Pizza__C WHERE name IN: theCart];
-        delete emptyCart;
+        thisCart = new Shopping_Cart__c(Store_Location__c = thisUser.default_location__c, Account__c = thisContact.AccountId);
+        insert thisCart;
+   
     }
     
     @auraEnabled
-    public static void submitOrder()
+    public static void makePizza(String size, String toppings)
     {
-		List<shopping_cart__c> toBeSubmitted = [SELECT name, OrderSubmitted__c, Delivery_Time__c
-             FROM shopping_cart__c WHERE ordersubmitted__c = false AND OwnerID = :user];
-        
-        for(Integer i = 0; i < toBeSubmitted.size(); i++)
-        {
-            toBeSubmitted[i].orderSubmitted__c = true;
-            deliveryTime = toBeSubmitted[i].Delivery_Time__c;
+        if(orderPizzas == NULL){
+            orderPizzas = new List<Pizza__C>();
         }
+        
+        orderPizzas.add(new Pizza__C(size__c = size, Toppings__c = toppings, Shopping_Cart__C = thisCart.Id));
+    }
+    
+    @auraEnabled
+    public static void PizzaPls()
+    {
+		insert orderPizzas;
     }
 }

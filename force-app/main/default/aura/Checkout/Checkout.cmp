@@ -1,20 +1,20 @@
-<aura:component implements="forceCommunity:availableForAllPageTypes" controller="getPizzaFields">
+<aura:component implements="forceCommunity:availableForAllPageTypes" controller="CheckoutHelperApexController">
     <aura:attribute name="couponInput" type="String" default="invalid code" />
     <aura:attribute name="insertCouponSection" type="boolean" default="false" />
     <aura:attribute name="invalidCoupon" type="boolean" default="false" />
+    
     <!--<aura:attribute name="parent" type="Aura.Component" default="OrderSPA" required="true" /> -->
 
+    <aura:handler name="init" value="{!this}" action="{!c.doInitStuff}" />
+
+ <!--   <aura:registerEvent name="bubblingEvent" type="c:OrderSPANotifierEvent"/> -->
 
 <!--Navigation buttons above the table -->
-        <div class="slds-align_absolute-center" style="height:4rem">
-            <lightning:button class="button-background" variant="brand-outline" label="Add Another Pizza" onclick="{!c.showPizzaPage}" /> &nbsp;&nbsp;&nbsp;&nbsp;
-            <lightning:button class="button-background" variant="brand-outline" label="Start Over" onclick="{!c.startOver}" />
-        </div>
     
         
 <!-- table that shows all the pizzas in the cart and their toppings and price-->
         <div>
-            <table border="1" class="tableStyle">
+            <table class="tableStyle">
                 <tr>
                     <th id="firstTable">Order Item</th>
             		<th class="centerText">Pizza Size</th>
@@ -93,6 +93,7 @@
         
         <div class="slds-align_absolute-center" style="height:5rem">
             <lightning:button class="button-background" variant="brand-Outline" label="View Cart" onclick="{!c.viewCart}" />&nbsp;&nbsp;&nbsp;&nbsp;
+            <lightning:button class="button-background" variant="brand-outline" label="Add Another Pizza" onclick="{!c.showPizzaPage}" /> &nbsp;&nbsp;&nbsp;&nbsp;
             <lightning:button variant="brand" label="Purchase" onclick="{!c.purchaseOrder}" />
         </div>
 

@@ -15,6 +15,10 @@
         return helper.applyDiscount(component);
     },
     
+    doInitStuff: function(component, event, helper){
+     	helper.init(component);
+    },
+    
     
     
     

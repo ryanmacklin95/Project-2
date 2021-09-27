@@ -4,20 +4,17 @@
         console.log("I might have gotten here");
         
         
-		let placeNewOrder = Component.get("c.placeHeartAttackOrder");
-        placeNewOrder.setCallback(this, $A.getCallback(function(response)
+		let placeNewOrder = component.get("c.placeHeartAttackOrder");
+        placeNewOrder.setCallback(this,(function(response)
 		{
-            let returnState = response.getState();
-            
-            if (returnState === 'SUCCESS'){
-               return response;
+            if (response.getState() == 'SUCCESS'){
+               component.set("v.OrderConfirmed", true);
             }
-            else if(returnState === 'ERROR'){
+            else if(response.getState() == 'ERROR'){
                 let errors = reponse.getError();
                 console.error(errors);
             }
         }));
         $A.enqueueAction(placeNewOrder);
-        component.set("v.OrderConfirmed", true);
 	}
 })
