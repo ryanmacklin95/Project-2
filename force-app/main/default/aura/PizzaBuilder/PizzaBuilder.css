@@ -1,0 +1,74 @@
+.THIS #pizza{
+	position: relative;
+    left: 5%;
+}
+
+.THIS #slds-form-element__label {
+    background: #34495E;
+    color: #fff;
+}
+
+.THIS #source-list-label-14 {
+    background: #34495E;
+    color: #fff;
+}
+
+.THIS #selected-list-label-14{
+    background: #34495E;
+    color: #fff;
+}
+
+.THIS #base {
+    position: relative;
+  	top: 0;
+ 	left: 0;
+    z-index: 0;
+    display: none;
+}
+
+.THIS #pepperoni {
+    position: absolute;
+  	top: 0;
+ 	left: 0;
+    z-index: -1;
+    display: none;
+}
+
+.THIS #sausage {
+    position: absolute;
+  	top: 0;
+ 	left: 0;
+    z-index: -1;
+    display: none;
+}
+
+.THIS #bacon {
+    position: absolute;
+  	top: 0;
+ 	left: 0;
+    z-index: -1;
+    display: none;
+}
+
+.THIS #pineapple {
+    position: absolute;
+  	top: 0;
+ 	left: 0;
+    height: 500px;
+    width: 500px;
+    z-index: -1;
+    display: none;
+}
+
+.THIS #pizzabuilder {
+    text-align: center;
+}
+
+.THIS .buttons {
+    padding-top: 4%;
+	text-align: center;
+}
+
+.THIS .col1 {
+    width: 30%;
+}
