@@ -33,9 +33,10 @@
         <members>*</members>
         <name>StaticResource</name>
     </types>
-
-
-
+    <types>
+        <member>*</members>
+        <name>AuraDefinitionBundle</name>
+    </types>
     <types>
         <members>*</members>
         <name>CustomObject</name>
