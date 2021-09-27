@@ -1,0 +1,12 @@
+{
+  "packageDirectories": [
+    {
+      "path": "force-app",
+      "default": true
+    }
+  ],
+  "name": "Steltz_Jordan_P2",
+  "namespace": "",
+  "sfdcLoginUrl": "https://wise-otter-573gq8-dev-ed.my.salesforce.com/",
+  "sourceApiVersion": "52.0"
+}

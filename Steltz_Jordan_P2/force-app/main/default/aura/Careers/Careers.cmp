@@ -1,0 +1,54 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes" access="global">
+	<aura:handler name="init" value="{! this }" action="{! c.doInit }"/>
+   <aura:attribute name="applicationData" type="String[]" default="{! This}"/>
+  <aura:attribute name="newRec" type="boolean" default="false" /> 
+ <aura:handler event="force:showToast" action="{! c.doInit }" />
+ <div class="Application">
+     <h2 class="header">Job Application</h2>
+     <aura:if isTrue ="{v.showList}">
+     <lightning:card title ="Application List">
+         <aura:set attribute="actions">
+             <lightning:button label ="Submit Application" onClick="{!c.handleCreate}"/>
+             
+         </aura:set>
+         <table>
+             <tr>
+                 <th>First Name</th>
+                 <th>Last Name</th>
+                 <th>Phone</th>
+                 <th>Email</th>
+                 <th>Additional Details</th>
+                 
+             </tr>
+            <aura:iteration items= "{v.applicationsData}" var ="applicant">
+                <tr>
+                <td> <a data-record="{!v.applicationsData}"></a></td>
+                   <td>{!applicant.FirstName__c}</td> 
+                    <td>{!applicant.LastName__c}</td>
+                    <td>{!applicant.Phone__c}</td>
+                    <td>{!applicant.Email__c}</td>
+                    <td>{!applicant.Details__c}</td>
+                </tr>
+                
+             </aura:iteration> 
+         
+         </table>
+         
+         </lightning:card>
+     </aura:if>
+     <aura:if isTrue="{!v.newRec}">
+     <lightning:card title="New Application" class="slds-var-m-around_xx-large slds-var-p-around_xx-large">
+         <lightning:recordEditForm  onsuccess="{!c.handleShowList}" objectApiName="Application__c">
+              <lightning:messages />
+             <lightning:inputField fieldName="First_name__c"/>
+             <lightning:inputField fieldName="Last_Name__c"/>
+             <lightning:inputField fieldName="Phone__c"/>
+             <lightning:inputField fieldName="Email__c"/>
+             <lightning:inputField fieldName="Details__c"/>
+         </lightning:recordEditForm> 
+         </lightning:card>
+     </aura:if>
+              
+        
+ </div>
+</aura:component>
