@@ -80,6 +80,7 @@
                             t = document.createTextNode(pizzas[i].split(",")[2].replaceAll('"', ''));
                             toppings.appendChild(t);
                             document.getElementById("Row" + i).style.display = "initial";
+                            document.getElementById("line" + i).style.display = "initial";
                         }
                     }
                     var destinationImage = new Image();
