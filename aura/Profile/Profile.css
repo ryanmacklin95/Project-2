@@ -1,0 +1,32 @@
+.THIS .c-container {
+    border: 1px solid #929660;
+    margin: 10px 0 20px 0;
+}
+.THIS .header{
+    background-color: #711509;
+    color: #E5DCC5;
+}
+.THIS .body{
+    background-color: #E5DCC5;
+    color: #000000;
+}
+.THIS .field-title{
+    background-color: #929660;
+    color: #E5DCC5;
+}
+.THIS .custom-box{
+    margin: 10px 0px;
+    background-color:#E5DCC5;
+    
+}
+.THIS .order{
+    background-color: #711509;
+    color:#E5DCC5;
+}
+.THIS .x-large{
+    background-color:#E5DCC5;
+    color: #000000;
+}
+.THIS{
+    
+}
