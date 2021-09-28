@@ -1,0 +1,9 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes">
+    <aura:attribute type="String" name="randomNumber" />
+    
+    <aura:handler name="init" value="{!this}" action="{!c.GenerateNumber}" />
+    <div>
+   		<p class="topText">Thank you, your order will be delivered in {!v.randomNumber} minutes.</p>
+    </div>
+    
+</aura:component>

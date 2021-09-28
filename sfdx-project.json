@@ -5,8 +5,8 @@
       "default": true
     }
   ],
-  "name": "Project-2",
+  "name": "DemoPage",
   "namespace": "",
-  "sfdcLoginUrl": "https://creative-wolf-clp1vg-dev-ed.my.salesforce.com/",
+  "sfdcLoginUrl": "https://login.salesforce.com",
   "sourceApiVersion": "52.0"
 }

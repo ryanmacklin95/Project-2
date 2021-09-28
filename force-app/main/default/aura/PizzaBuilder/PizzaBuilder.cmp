@@ -1,0 +1,62 @@
+<aura:component access="global" implements="forceCommunity:availableForAllPageTypes,force:appHostable,lightning:isUrlAddressable">    
+    <aura:attribute name="size" type="List" default="[]"/>
+    <aura:attribute name="choices" type="List" default="[]"/>
+    <aura:attribute name="toppings" type="List" default='[
+                                                         { value: "Pepperoni", label: "Pepperoni" },
+                                                         { value: "Bacon", label: "Bacon" },
+                                                         { value: "Sausage", label: "Sausage" },
+                                                         { value: "Pineapple", label: "Pineapple" }]'/>
+    <aura:attribute name="edit" type="Boolean" default="false"/>
+    <aura:attribute name="parent" type="Aura.Component" default="OrderSPA" required="true"/>
+    <aura:handler name="init" value="{!this}" action="{!c.initialize}"/>
+    <aura:registerEvent name="bubblingEvent" type="c:OrderSPANotifierEvent"/>
+    
+    <h1 style="text-align: center; color: #fff; font-size: 30px; font-weight: bold; background: #34495E; ">Pizza Builder</h1>
+    
+    <div class="slds-grid slds-gutters" style="width:80%;  display: block;
+                                               margin-left: auto;
+                                               margin-right: auto;">
+        <div class="slds-col" style="text-align: center;">
+            <div id="pizza" style="display: none;">
+                <img src="{!$Resource.plain_pizza}"  id="base" alt="plain pizza" />
+                <img src="{!$Resource.pepperoni}"  id="Pepperoni" alt="pepperoni"/>
+                <img src="{!$Resource.sausage}"  id="Sausage" alt="sausage"/>
+                <img src="{!$Resource.bacon}"  id="Bacon" alt="bacon"/>
+                <img src="{!$Resource.pineapple}"  id="Pineapple" alt="pineapple"/>
+            </div>
+            <canvas id="pizzaCanvas" height="300" width="300">
+                
+            </canvas>
+        </div>
+        <div class="slds-col" style="width: 50%;  display: block;
+                                     margin-left: auto;
+                                     margin-right: auto;
+                                     margin-top: 1%">
+            <div id="pizzabuilder">
+                <lightning:select name="size" 
+                                  label="Size" 
+                                  required="true"
+                                  aura:id="size">
+                    <option text="Small" value="Small" />
+                    <option text="Medium" value="Medium" />
+                    <option text="Large" value="Large" />
+                    <option text="Extra_Large" value="Extra_Large" />
+                </lightning:select>
+                
+                <lightning:dualListbox if:true="{!v.toppings}"
+                                       name="toppings"
+                                       sourceLabel="Available"
+                                       selectedLabel="Selected"
+                                       options="{!v.toppings}"
+                                       onchange="{!c.handleChange}"
+                                       disableReordering="true"
+                                       aura:id="toppings"/>
+                
+                <lightning:buttonGroup class = "buttons">
+                    <lightning:button label="Add Pizza" title="Add Pizza" onclick="{!c.addPizzaToCart}"/>
+                    <lightning:button label="Checkout" title="Checkout" onclick="{!c.navigateToCheckout}"/>
+                </lightning:buttonGroup>
+            </div>
+        </div>
+    </div> 
+</aura:component>

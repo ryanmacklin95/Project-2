@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Store_Location__c</fullName>
+    <externalId>false</externalId>
+    <label>Store Location</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>1600 Pennsylvania Ave NW, Washington, DC</fullName>
+                <default>true</default>
+                <label>1600 Pennsylvania Ave NW, Washington, DC</label>
+            </value>
+            <value>
+                <fullName>5 Avenue Anatole France, Paris, FR 75007</fullName>
+                <default>false</default>
+                <label>5 Avenue Anatole France, Paris, FR 75007</label>
+            </value>
+            <value>
+                <fullName>Place de la Louve 6, 7100 La Louviere, Belgium</fullName>
+                <default>false</default>
+                <label>Place de la Louve 6, 7100 La Louviere, Belgium</label>
+            </value>
+            <value>
+                <fullName>24 Maggio 30, Pisa, IT 56127</fullName>
+                <default>false</default>
+                <label>24 Maggio 30, Pisa, IT 56127</label>
+            </value>
+            <value>
+                <fullName>Liberty Island, New York City, NY 10004</fullName>
+                <default>false</default>
+                <label>Liberty Island, New York City, NY 10004</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

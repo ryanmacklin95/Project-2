@@ -11,12 +11,14 @@
         helper.couponDiscounts(component);
     },
     
-    reducedPrice: function(component, event, helper){
-        return helper.applyDiscount(component);
+    reducedPrice: function(component, event, helper, finalPrice){
+        helper.applyDiscount(component, event, helper, finalPrice);
+        console.log("final price: " + finalPrice);
     },
     
     doInitStuff: function(component, event, helper){
      	helper.init(component);
+        console.log("help");
     },
     
     

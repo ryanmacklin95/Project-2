@@ -1,0 +1,20 @@
+<aura:component  implements="forceCommunity:availableForAllPageTypes">
+    <section>
+        <div class="footer">
+            <table>
+                <tr>
+                    <td>
+            			<img class="imageStuff" src="{!$Resource.Logo}" height="200" />
+                    </td>
+            		<td>
+                        <p class="textStuff"><a href="/careers" style="color: #E5DCC5"><div class="slds-align_absolute-center"><u>Apply today!</u></div></a>
+                            <br />
+                            <br />
+                            
+                        Special price and participation may vary. May not be valid with other offers or $ or % off discounts.</p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </section>
+</aura:component>

@@ -1,0 +1,9 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes,force:hasRecordId" controller = "CustomController" >
+    <aura:attribute name="map" type="map" />
+    <aura:attribute name="cart" type="String" />
+    <aura:attribute name="toppings" type="String" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <p>{!v.cart} --- {!v.toppings}</p>
+    
+	
+</aura:component>

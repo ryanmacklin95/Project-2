@@ -1,0 +1,14 @@
+<aura:component  implements="forceCommunity:availableForAllPageTypes">
+    
+    <aura:handler name="init" value="{!this}" action="{!c.initialize}"/>
+    
+
+    
+    <div aura:id="CareersDiv">
+        <c:CareersAttempt parent="{!this}" aura:id="career"/>
+    </div> 	
+        <div aura:id="AppDiv">
+        <c:JobApplicationAttempt parent="{!this}" aura:id="app"/>
+    </div>
+    
+</aura:component>

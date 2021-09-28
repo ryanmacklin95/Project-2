@@ -1,0 +1,24 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" >
+    <div class="outer">
+        <lightning:layout>
+            <div class="slds-align_absolute-center">
+            <lightning:layoutItem flexibility="auto" padding="around-small" >
+                <p class="textStuff"><a href="/s/careers" style="color: #E5DCC5"><div class="slds-align_absolute-center"><u>Apply today!</u></div></a></p>
+                <div class="slds-align_absolute-center">
+                    <img src ="{!$Resource.Logo}"/>
+                </div>
+            </lightning:layoutItem>
+            
+                <lightning:layoutItem flexibility="auto" padding="around-small">
+                    <p class="pastaTitle">Here is a user submitted story to keep your heart warm!</p>
+                    I sat on the bus, on my way to school. At one of the stops my mind snapped back to reality. <br/> 
+                    I looked towards Tommy’s house.  A hand slipped through the drapes of the window and waved the bus driver to move on. <br/>
+                    The day flew by. I watched the local news channel after school. <br />
+                    Tommy’s entire family was murdered that day by an unknown suspect. <br/>
+                    After hearing this news, I moved back up to my room and quietly fell asleep.
+                    
+                </lightning:layoutItem>
+            </div>
+        </lightning:layout>
+    </div>
+</aura:component>

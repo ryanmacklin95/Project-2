@@ -1,0 +1,56 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" controller = "CareersCon">
+<!-- Component attribute, I am also trying to get better at commenting!-->
+  
+    <aura:attribute name="parent" type="Aura.Component" default="OrderSPA" required="true" />
+    <aura:RegisterEvent name="careers" type="c:SwitchComponent" />
+    
+    <!-- for orginizational purposes handler goes here!-->
+    <aura:handler name ="init" value="{!this}" action="{!c.initialize}"/>
+    <!--aura:handler event="force:showToast" action="{! c.initalize }" /-->
+    
+    <!-- Actual datatable component!-->
+  <!--aura:handler name="init" value="{! this }" action="{! c.doInit }"/-->
+   <aura:attribute name="careerData" type="Career__c[]" default="{! This}"/>
+  <aura:attribute name="newRec" type="boolean" default="false" /> 
+ <div class="Application">
+     <h2 class="header">Careers</h2>
+     <aura:if isTrue ="{!v.showList}">
+     <lightning:card title ="Career List">
+         <aura:set attribute="actions">
+             
+         </aura:set>
+         <table>
+             <tr>
+                 <th>Job Title: </th>
+                 <th>Job Description</th>
+                 <th>Job Requirements</th>
+             </tr>
+            <aura:iteration items= "{!v.jobData}" var ="jobs">
+                <tr>
+                <td> <a data-record="{!v.jobs}"></a></td>
+                   <td>{!jobs.Job_Title__c}</td> 
+                    <td>{!jobs.Job_Description__c}</td>
+                    <td>{!jobs.Job_Requirement__c}</td>
+                </tr>
+                
+             </aura:iteration> 
+         
+         </table>
+         
+         </lightning:card>
+     </aura:if>
+     <aura:if isTrue="{!v.newRec}">
+     <lightning:card title="New Application" class="slds-var-m-around_xx-large slds-var-p-around_xx-large">
+         <lightning:recordEditForm  onsuccess="{!c.handleShowList}" objectApiName="Career__c">
+              <lightning:messages />
+             <lightning:outputField fieldName="Job_Title"/>
+             <lightning:outputField fieldName="Job_Description__c"/>
+             <lightning:outputField fieldName="Job_Requirements"/>
+         </lightning:recordEditForm> 
+         </lightning:card>
+     </aura:if>
+              
+        
+ </div>
+    
+</aura:component>

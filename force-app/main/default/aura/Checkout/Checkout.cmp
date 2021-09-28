@@ -2,39 +2,41 @@
     <aura:attribute name="couponInput" type="String" default="invalid code" />
     <aura:attribute name="insertCouponSection" type="boolean" default="false" />
     <aura:attribute name="invalidCoupon" type="boolean" default="false" />
+    <aura:attribute name="finalPrice" type="String" />
+    <aura:attribute name="couponPrice" type="String" />
+    <aura:attribute name = 'iter' type = 'List' default = '["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", 
+                                                           "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"]' />
     
-    <!--<aura:attribute name="parent" type="Aura.Component" default="OrderSPA" required="true" /> -->
-
-    <aura:handler name="init" value="{!this}" action="{!c.doInitStuff}" />
-
- <!--   <aura:registerEvent name="bubblingEvent" type="c:OrderSPANotifierEvent"/> -->
-
-<!--Navigation buttons above the table -->
+    <aura:attribute name="parent" type="Aura.Component" default="OrderSPA" required="true" /> 
+	<aura:registerEvent name="bubblingEvent" type="c:OrderSPANotifierEvent"/> 
+    <aura:method name="applyCoupon" action="{!c.reducedPrice}"/>
+    <aura:method name="checkoutStuff" action="{!c.doInitStuff}"/>
     
         
 <!-- table that shows all the pizzas in the cart and their toppings and price-->
         <div>
             <table class="tableStyle">
                 <tr>
-                    <th id="firstTable">Order Item</th>
-            		<th class="centerText">Pizza Size</th>
-                    <th class="centerText">Toppings</th>
-                    <th class="centerText">Price</th>
+                    <th style = 'width: 25%; text-align: center; font-weight: Bold;'>Order Item</th>
+            		<th style = 'width: 25%; text-align: center; font-weight: Bold;'>Pizza Size</th>
+                    <th style = 'width: 25%; text-align: center; font-weight: Bold;'>Toppings</th>
+                    <th style = 'width: 25%; text-align: center; font-weight: Bold;'>Price</th>
                 </tr>
-                <aura:iteration items="{!c.selectPizzaInCart}" var="myPizza">
-                    <tr>
-                        <td>
-                            <lightning:outputField fieldName="myPizza" />
-                        </td>
-                        <td>
-                            <lightning:outputField fieldName="myPizza.size__c" />
-                        </td>
-                    	<td>
-                            <lightning:outputField fieldName="myPizza.Toppings__c" />
-                        </td>
-                        <td>
+            </table>
+            <table class="tableStyle">
+                <aura:iteration items = '{!v.iter}' var = 'item'>
+                    <tr id="{!'cRow' + item}" style="display: none;">
+                        <td id="{!'cNumber' + item}"></td>
+                        
+                        <td id = "{!'cSize' + item}"></td>
+                        
+                    	<td id = "{!'cToppings' + item}"></td>
+                        
+                        <td id = "{!'cPrice' + item}"></td>
+                        
+                        <!--<td>
                             <lightning:outputField fieldName="myPizza.Price__c" />
-                        </td>
+                        </td> -->
                     </tr>
                 </aura:iteration>
                 
@@ -46,8 +48,7 @@
         
         
         <div class="slds-align_absolute-center">
-            <p class="textResize">Order Total: 
-                <lightning:outputField fieldName="{!c.getTotalPrice}" />
+            <p class="textResize" id="TotalPrice">
             </p>
         </div>
         
@@ -76,7 +77,7 @@
                 
             <div class="slds-align_absolute-center">
                 Your new price: 
-				<lightning:outputField fieldName="{!c.reducedPrice}" />
+				<p id ="CouponPrice"></p>
             </div>
         </aura:if>
         

@@ -19,5 +19,8 @@
         var pizzas = component.get('v.myPizzas');
         pizzas.push(pizza);
         component.set('v.myPizzas', pizzas);
+    }, 
+    goToCheckout: function(component, event, helper){
+		helper.checkout(component, event);
     }
 })
